@@ -39,26 +39,26 @@ const Calculator = () => {
     <div>
       <p>
         {'Starting capital: '}
-        $ <input type="text" value={capital} onChange={handleCapitalChange} />
+        $ <input type="number" value={capital} onChange={handleCapitalChange} />
       </p>
 
       <p>
         {'Number of years: '}
-        <input type="text" value={years} onChange={handleYearsChange} />
+        <input type="number" value={years} onChange={handleYearsChange} />
       </p>
 
       <p>
-        {'Growth rate %: '}
-        <input type="text" value={growthRate} onChange={handleRateChange} />
+        {'Growth rate: % '}
+        <input type="number" value={growthRate} onChange={handleRateChange} />
       </p>
 
       <h3>{'Returns: '}</h3>
-      <p>$ {finalValue.toFixed(2)}</p>
+      <p>$ {new Intl.NumberFormat().format(finalValue)}</p>
 
       <ol>
         {
           returns.map((ret, year) => (
-            <li key={year}>{`${2019 + year}`} - ${ret.toFixed(2)}</li>
+            <li key={year}>{`${2019 + year}`} - ${new Intl.NumberFormat().format(ret)}</li>
           ))
         }
       </ol>
