@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import calcReturns from '../lib/calc-returns';
 import asCash from '../lib/as-cash';
+import AutosizeInput from 'react-input-autosize';
+
+import './Calculator.css';
 
 const Calculator = () => {
   const [capital, setCapital] = useState(1000);
@@ -36,28 +39,46 @@ const Calculator = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div>
+    <div className="calculator">
       <p>
-        {'Starting capital: '}
-        $ <input type="number" value={capital} onChange={handleCapitalChange} />
+        {'If start with $ '}
+        <AutosizeInput
+          name="capital"
+          type="number"
+          value={capital}
+          onChange={handleCapitalChange}
+        />
+      </p>
+      <p>
+        {' and every month I add an extra $ '}
+        <AutosizeInput
+          name="addtion"
+          type="number"
+          value={addition}
+          onChange={handleAdditionChange}
+        />
+      </p>
+      <p>
+        {' growing at '}
+        <AutosizeInput
+          name="growth-rate"
+          type="number"
+          value={growthRate}
+          onChange={handleRateChange}
+        />
+        {' % a year, '}
+      </p>
+      <p>
+        {'after '}
+        <AutosizeInput
+          name="years"
+          type="number"
+          value={years}
+          onChange={handleYearsChange}
+        />
+        {' years, I would have...'}
       </p>
 
-      <p>
-        {'Monthly contributions: '}
-        $ <input type="number" value={addition} onChange={handleAdditionChange} />
-      </p>
-
-      <p>
-        {'Number of years: '}
-        <input type="number" value={years} onChange={handleYearsChange} />
-      </p>
-
-      <p>
-        {'Growth rate: % '}
-        <input type="number" value={growthRate} onChange={handleRateChange} />
-      </p>
-
-      <h2>{'Returns: '}</h2>
       <h3>{asCash(finalValue)}</h3>
 
       <ul>
