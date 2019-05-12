@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Growth Calc`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `A super-fast compound interest calculator`,
+    author: `WH`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
