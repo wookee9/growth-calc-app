@@ -41,7 +41,7 @@ const Calculator = () => {
   return (
     <div className="calculator">
       <p>
-        {'If start with $ '}
+        {'If I start with $ '}
         <AutosizeInput
           name="capital"
           type="number"
