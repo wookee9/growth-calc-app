@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import calcReturns from '../lib/calc-returns';
 import asCash from '../lib/as-cash';
-import AutosizeInput from 'react-input-autosize';
+// import AutosizeInput from 'react-input-autosize';
+import ContentEditable from 'react-contenteditable'
+
 
 import './Calculator.css';
 
@@ -12,20 +14,28 @@ const Calculator = () => {
   const [addition, setAddition] = useState(100);
 
   const handleYearsChange = (e) => {
-    if (e.target.value > 1000) return;
-    setYears(e.target.value);
+    const floatVal = parseFloat(e.target.value);
+    if (typeof floatVal !== 'number') return;
+    if (floatVal > 1000) return;
+    setYears(floatVal);
   }
 
   const handleRateChange = (e) => {
-    setRate(e.target.value);
+    const floatVal = parseFloat(e.target.value);
+    if (typeof floatVal !== 'number') return;
+    setRate(floatVal);
   }
 
   const handleCapitalChange = (e) => {
-    setCapital(e.target.value);
+    const floatVal = parseFloat(e.target.value);
+    if (typeof floatVal !== 'number') return;
+    setCapital(floatVal);
   }
 
   const handleAdditionChange = (e) => {
-    setAddition(e.target.value);
+    const floatVal = parseFloat(e.target.value);
+    if (typeof floatVal !== 'number') return;
+    setAddition(floatVal);
   }
 
   const returns = calcReturns(
@@ -42,38 +52,38 @@ const Calculator = () => {
     <div className="calculator">
       <p>
         {'If I start with $ '}
-        <AutosizeInput
+        <ContentEditable
+          className="editable"
           name="capital"
-          type="number"
-          value={capital}
+          html={capital.toString()}
           onChange={handleCapitalChange}
         />
       </p>
       <p>
         {' and every month I add an extra $ '}
-        <AutosizeInput
+        <ContentEditable
+          className="editable"
           name="addtion"
-          type="number"
-          value={addition}
+          html={addition.toString()}
           onChange={handleAdditionChange}
         />
       </p>
       <p>
         {' growing at '}
-        <AutosizeInput
+        <ContentEditable
+          className="editable"
           name="growth-rate"
-          type="number"
-          value={growthRate}
+          html={growthRate.toString()}
           onChange={handleRateChange}
         />
         {' % a year, '}
       </p>
       <p>
         {'after '}
-        <AutosizeInput
+        <ContentEditable
+          className="editable"
           name="years"
-          type="number"
-          value={years}
+          html={years.toString()}
           onChange={handleYearsChange}
         />
         {' years, I would have...'}

@@ -2,12 +2,13 @@
   margin: 1rem 0;
 }
 
-.calculator input {
+.calculator .editable {
   border: none;
   border-bottom: 1px solid gray;
   background: #f4e8ff;
-  padding: 0.1rem 0 0.1rem 0.5rem;
+  padding: 0.1rem;
   min-width: 1px;
+  display: inline;
 }
 
 .calculator h3 {
